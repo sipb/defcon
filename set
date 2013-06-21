@@ -1,0 +1,6 @@
+#!/bin/bash
+# usage: set VALUE
+# sets the defcon to VALUE
+
+DEFCON_PATH = dirname "$0"
+echo $1 > $DEFCON_PATH/defcon
