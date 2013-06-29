@@ -4,8 +4,7 @@ from commands import getstatusoutput
 
 print "Content-type: text/html\n"
 print """
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- $$Id: jsterm.html,v 1.2 2006/04/21 18:13:41 ichinose Exp $$ -->
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
