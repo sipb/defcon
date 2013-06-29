@@ -44,6 +44,7 @@ margin-right: auto;
 font-family:"Monaco", monospace;
 font-size: 16pt;
 text-align: center;
+width: 35em;
 }
 
 h2{
@@ -82,6 +83,7 @@ ${value}
 error_header = """
 <h2>Error retrieving DEFCON value.</h2>
 <h1>This may be due to outages in Athena or due to a problem on our end. Please check back later or check the DEFCON sign in our office window at W20-557.</h1>
+<br>
 """
 
 remctl_output = getstatusoutput('remctl sipb-defcon get')
