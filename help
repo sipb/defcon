@@ -1,0 +1,14 @@
+#!/bin/bash
+# usage: help
+# provides usage info
+
+echo
+echo "Welcome to the SIPB DEFCON remctl interface!"
+echo
+echo "Commands:"
+echo "remctl sipb-defcon set N : Sets the DEFCON value to N, where N is a single digit between 1 and 5. Requires permissions."
+echo "remctl sipb-defcon get : Returns the current DEFCON value."
+echo "remctl sipb-defcon help : Displays this dialog."
+echo
+echo "For question, comments, or concerns, please email sipb-joint-chiefs@mit.edu."
+echo
