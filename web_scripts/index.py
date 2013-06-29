@@ -2,7 +2,8 @@
 from string import Template
 from commands import getstatusoutput
 
-template_string = """
+print "Content-type: text/html\n"
+print """
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- $$Id: jsterm.html,v 1.2 2006/04/21 18:13:41 ichinose Exp $$ -->
 <html>
@@ -12,7 +13,7 @@ template_string = """
 
 body, body *{
 background:black;
-color:green;
+color: #008000;
 scrollbar-base-color: #000000;
 scrollbar-arrow-color: #006400;
 scrollbar-3dlight-color: #006400;
@@ -66,8 +67,10 @@ text-align: left;
 </style>
 <title>SIPB Athena DEFCON</title>
 </head>
-
 <body>
+"""
+
+defcon_value_header = """
 <h1>
 The current Athena defense condition is:
 </h1>
@@ -75,7 +78,26 @@ The current Athena defense condition is:
 <h2>
 ${value}
 </h2>
+"""
 
+error_header = """
+<h2>Error retrieving DEFCON value.</h2>
+<h1>This may be due to outages in Athena or due to a problem on our end. Please check back later or check the DEFCON sign in our office window at W20-557.</h1>
+"""
+
+remctl_output = getstatusoutput('remctl sipb-defcon get')
+exit_status = remctl_output[0]
+defcon_value = remctl_output[1]
+
+if not exit_status:
+    template_string = defcon_value_header
+else:
+    template_string = error_header
+
+header_template = Template(template_string)
+print header_template.substitute(dict(value=defcon_value))
+                                      
+print """
 <p>
 This website is maintained by the <a href="http://sipb.mit.edu/">MIT Student Information Processing Board (SIPB)</a>. The value displayed here summarizes SIPB's assessment of the current state of the MIT Athena network. A value of 5 indicates that Athena is in normal condition, a value of 4 might indicate outages, and decreasing values (nearing the minimum value 1) might indicate severe outages or security concerns.
 </p>
@@ -84,12 +106,9 @@ This website is maintained by the <a href="http://sipb.mit.edu/">MIT Student Inf
 This website does not reflect the opinions of MIT staff or administration. For questions, comments, and concerns, please contact <a href="mailto:sipb-joint-chiefs@mit.edu">sipb-joint-chiefs@mit.edu</a>.
 </p>
 
-<img src="fuzzball.png">
+<a href="http://sipb.mit.edu/"><img src="fuzzball.png"></a>
 </body>
 </html>
 """
 
-template = Template(template_string)
-defcon_value = getstatusoutput('remctl sipb-defcon get')[1]
-print "Content-type: text/html\n"
-print template.substitute(dict(value=defcon_value))
+print "<!-- [Debugging Information:] [Exit Status:] " + str(exit_status) + " [Output:] " + defcon_value + " -->"
