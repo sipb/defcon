@@ -86,7 +86,7 @@ error_header = """
 <br>
 """
 
-remctl_output = getstatusoutput('remctl sipb-defcon get')
+remctl_output = getstatusoutput('kinit -k -t /afs/sipb.mit.edu/project/defcon/etc/daemon-defcon.keytab daemon/defcon.mit.edu@ATHENA.MIT.EDU; remctl sipb-defcon get')
 exit_status = remctl_output[0]
 defcon_value = remctl_output[1]
 
