@@ -1,6 +1,6 @@
 #!/usr/bin/python
-# usage: push.py VALUE
-# Sets the relevant Rasperry Pi GPIO output pins to drive a 7-segment display to display VALUE
+# usage: display.py VALUE
+# sets the relevant Rasperry Pi GPIO output pins to drive a 7-segment display to display VALUE
 
 import RPi.GPIO as GPIO
 import sys
