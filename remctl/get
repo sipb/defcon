@@ -3,5 +3,4 @@
 # returns the defcon value
 
 DEFCON_PATH=`dirname "$0"`
-read -n 1 value < "$DEFCON_PATH/defcon"
-echo "$value"
+line < "$DEFCON_PATH/defcon"
