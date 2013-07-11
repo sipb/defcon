@@ -6,7 +6,7 @@
 import RPi.GPIO as GPIO
 import sys
 
-def main():
+def main(value):
     
     # use P1 header pin numbering convention
     GPIO.setmode(GPIO.BOARD)
@@ -29,9 +29,6 @@ def main():
     GPIO.setup(seg_E, GPIO.OUT)
     GPIO.setup(seg_F, GPIO.OUT)
     GPIO.setup(seg_G, GPIO.OUT)
-
-    # take in input value
-    value = sys.argv[1]
 
     # push proper outputs to GPIO pins to display value
     if value == 'x': # an input of x will blank the display
@@ -108,3 +105,6 @@ def main():
         GPIO.output(seg_G, GPIO.HIGH)
     else:
         print "Invalid input.\nPlease set the DEFCON value to a single digit between 1 and 5.\nThe physical display has not been changed and will update when the next valid value is set."
+
+if __name__ = "__main__":
+    main(sys.argv[1])
