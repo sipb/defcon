@@ -106,5 +106,5 @@ def main(value):
     else:
         print "Invalid input.\nPlease set the DEFCON value to a single digit between 1 and 5.\nThe physical display has not been changed and will update when the next valid value is set."
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     main(sys.argv[1])
