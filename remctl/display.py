@@ -7,6 +7,9 @@ import RPi.GPIO as GPIO
 import sys
 
 def main(value):
+
+    # tell RPi.GPIO to be quiet, since we know the pins are already being used (by the previous run)
+    GPIO.setwarnings(False)
     
     # use P1 header pin numbering convention
     GPIO.setmode(GPIO.BOARD)
