@@ -31,7 +31,7 @@ def main(value):
     GPIO.setup(seg_G, GPIO.OUT)
 
     # push proper outputs to GPIO pins to display value
-    if value == 'x': # an input of x will blank the display
+    if value == ' ': # an input of a single space will blank the display
         GPIO.output(seg_A, GPIO.LOW)
         GPIO.output(seg_B, GPIO.LOW)
         GPIO.output(seg_C, GPIO.LOW)
