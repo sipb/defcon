@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 # usage: display.py VALUE
 # sets the relevant Rasperry Pi GPIO output pins to drive a 7-segment display to display VALUE
 
